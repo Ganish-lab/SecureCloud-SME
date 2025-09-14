@@ -1,9 +1,8 @@
 # SecureCloud SME 🌍🔒
 **Affordable Cloud Security for Small & Medium Enterprises (SMEs)**  
 
-SecureCloud SME helps SMEs monitor their cloud environments (AWS first, later Azure & GCP) for misconfigurations, weak policies, and compliance risks — without needing expensive security teams.  
-
-Inspired by the simplicity of tools like **Uber (no cars owned)** and **Spotify (no music owned)**, SecureCloud SME delivers **security-as-a-service**, tailored for SMEs in Kenya, Africa, and globally.  
+SecureCloud SME helps SMEs monitor their cloud environments (AWS first, later Azure & GCP) for misconfigurations, weak policies, and compliance risks  without needing expensive security teams.  
+SecureCloud SME delivers **security-as-a-service**, tailored for SMEs in Kenya, Africa, and globally.  
 
 ---
 
