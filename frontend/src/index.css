@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Removed Tailwind directives due to unknown at-rule error */
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -28,44 +26,43 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-h1 {n-width: 320px;
-  font-size: 3.2em;;
-  line-height: 1.1;
 }
+
 h1 {
-button {ize: 3.2em;
+  font-size: 3.2em;
+  line-height: 1.1;
+  width: 320px;
+}
+
+button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;x;
-  font-family: inherit;nsparent;
+  font-weight: 500;
+  font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-} font-family: inherit;
-button:hover {olor: #1a1a1a;
+}
+
+button:hover {
   border-color: #646cff;
-} transition: border-color 0.25s;
+}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-button:focus,
+
 @media (prefers-color-scheme: light) {
-  :root {: 4px auto -webkit-focus-ring-color;
+  :root {
     color: #213547;
     background-color: #ffffff;
-  }dia (prefers-color-scheme: light) {
+  }
   a:hover {
     color: #747bff;
-  } background-color: #ffffff;
-  button {
-    background-color: #f9f9f9;
-  } color: #747bff;
-} }
+  }
   button {
     background-color: #f9f9f9;
   }
