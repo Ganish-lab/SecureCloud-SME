@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -10,6 +11,9 @@ export default function Register() {
     confirmPassword: "",
   });
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState("");
+  const navigate = useNavigate();
 
   const validate = () => {
     const newErrors = {};
@@ -35,17 +39,33 @@ export default function Register() {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: undefined });
+    setApiError("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-    console.log("Registering:", form);
-    // TODO: Send to FastAPI backend
+    setLoading(true);
+    setApiError("");
+    try {
+      const res = await axios.post("http://localhost:8000/register", {
+        company_name: form.businessName,
+        email: form.email,
+        password: form.password,
+      });
+      // Registration successful, redirect to login
+      navigate("/");
+    } catch (err) {
+      setApiError(
+        err.response?.data?.detail ||
+          "Registration failed. Please try again."
+      );
+    }
+    setLoading(false);
   };
 
   return (
@@ -56,6 +76,10 @@ export default function Register() {
         noValidate
       >
         <h2 className="text-2xl font-bold mb-4">Register SME</h2>
+
+        {apiError && (
+          <div className="text-red-500 text-sm mb-2">{apiError}</div>
+        )}
 
         <input
           type="text"
@@ -133,8 +157,11 @@ export default function Register() {
           </div>
         )}
 
-        <button className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 mt-2">
-          Register
+        <button
+          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 mt-2"
+          disabled={loading}
+        >
+          {loading ? "Registering..." : "Register"}
         </button>
 
         <div className="mt-4 text-center">
